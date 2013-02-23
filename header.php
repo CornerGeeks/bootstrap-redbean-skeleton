@@ -1,7 +1,7 @@
 <?php
 require_once("rb.php");
 require_once("config.php");
-R::setup("mysql:host=localhost;dbname=$dbname",$dbuser,$dbpass);
+R::setup("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpass);
 session_start();
 
 function strip_slashes_recursive($mixed){
