@@ -13,13 +13,14 @@ function strip_slashes_recursive($mixed){
     return $mixed; 
 }
 
-function hasher($p,$h=""){
-  if($h)return $h==crypt($p,substr($h,0,strpos($h,"$",20)+1));
-  for($i=0;$i<16;$i++)$h.=chr(rand(64,126));
-  return crypt($p,'$5$rounds=5000$'.$h.'$'); 
+function hasher($p){
+  $salt="";
+  for($i=0;$i<16;$i++)
+  	$salt.=chr(rand(ord('@'),ord('~'))); //create a random 16 char string from ascii @ to ~
+  return crypt($p,'$5$rounds=5000$'.$salt.'$'); //$5 = SHA_256
 }
 function check_hash($p,$h){
-	return $h==hasher($p,$h);
+	return $h==crypt($p,$h);
 }
 
 if (get_magic_quotes_gpc()){ //!! ideally disable the magic
