@@ -1,4 +1,5 @@
 <?php
+$dbhost="DATABASE_HOST_HERE";
 $dbname="DATABASE_NAME_HERE";
 $dbuser="DATABASE_USERNAME_HERE";
 $dbpass="DATABASE_PASSWORD_HERE";
